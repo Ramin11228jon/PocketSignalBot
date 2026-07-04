@@ -11,7 +11,7 @@ bot.onText(/\/start/, (msg) => {
     msg.chat.id,
     `سلام ${msg.from.first_name}! 👋
 
-به ربات Pocket Signal  خوش آمدی بعدکردی.
+به ربات Pocket Signal خوش آمدی.
 
 این ربات در حال توسعه است و به‌زودی سیگنال‌های تحلیلی را نمایش خواهد داد.`
   );
