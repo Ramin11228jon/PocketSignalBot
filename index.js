@@ -2,6 +2,10 @@ const TelegramBot = require('node-telegram-bot-api');
 
 const token = process.env.BOT_TOKEN;
 
+if (!token) {
+  throw new Error("BOT_TOKEN is not set");
+}
+
 const bot = new TelegramBot(token, {
   polling: true
 });
@@ -9,35 +13,27 @@ const bot = new TelegramBot(token, {
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(
     msg.chat.id,
-    `سلام ${msg.from.first_name}! 👋
+    `سلام ${msg.from.first_name} 👋
 
 به ربات Pocket Signal خوش آمدی.
 
-این ربات در حال توسعه است و به‌زودی سیگنال‌های تحلیلی را نمایش خواهد داد.`
+دستورهای موجود:
+/start
+/signal`
   );
 });
 
-bot.on('message', (msg) => {
-  if (msg.text !== '/start') {
-    bot.sendMessage(
-      msg.chat.id,
-      'پیام شما دریافت شد. به‌زودی قابلیت‌های بیشتری اضافه می‌شود.'
-    );
-  }
-});
-
-console.log("Pocket Signal Bot Started...");
 bot.onText(/\/signal/, (msg) => {
   bot.sendMessage(
     msg.chat.id,
-    `📊 سیگنال آزمایشی
+`📊 سیگنال آزمایشی
 
 🟢 CALL
 💱 EUR/USD
-⏰ زمان: ${new Date().toLocaleTimeString()}
 ⌛ مدت: 1 دقیقه
 
-⚠️ این فقط یک سیگنال آزمایشی است و تحلیل واقعی نیست.`
+⚠️ این فقط یک پیام آزمایشی است و سیگنال واقعی یا تضمینی نیست.`
   );
 });
+
 console.log("Pocket Signal Bot Started...");
