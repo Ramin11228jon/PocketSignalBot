@@ -27,3 +27,17 @@ bot.on('message', (msg) => {
 });
 
 console.log("Pocket Signal Bot Started...");
+bot.onText(/\/signal/, (msg) => {
+  bot.sendMessage(
+    msg.chat.id,
+    `📊 سیگنال آزمایشی
+
+🟢 CALL
+💱 EUR/USD
+⏰ زمان: ${new Date().toLocaleTimeString()}
+⌛ مدت: 1 دقیقه
+
+⚠️ این فقط یک سیگنال آزمایشی است و تحلیل واقعی نیست.`
+  );
+});
+console.log("Pocket Signal Bot Started...");
